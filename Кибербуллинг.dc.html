@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;700&family=Unbounded:wght@600;700&display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:rgb(247,247,247);color:rgb(22,10,10);font-family:Onest,sans-serif;-webkit-font-smoothing:antialiased}
+a{color:rgb(22,10,10);text-decoration:none}
+a:hover{color:rgb(22,10,10);text-decoration:underline}
+*{box-sizing:border-box}
+</style>
+</helmet>
+<div data-screen-label="Статья: Кибербуллинг" style="min-height:100vh;background:rgb(247,247,247);overflow:hidden">
+
+  <header style="max-width:1360px;margin:0 auto;padding:24px 40px 0;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+    <a href="#" style="font-family:Unbounded,sans-serif;font-weight:600;font-size:20px;line-height:25px;letter-spacing:-0.4px;text-decoration:none">Цифрик</a>
+    <nav style="display:flex;align-items:center;gap:25px;font-size:15px;line-height:19px">
+      <a href="#" style="text-decoration:none">о нас</a>
+      <a href="#" style="text-decoration:none;background:rgb(206,238,251);border-radius:999px;padding:8px 10px">истории</a>
+      <a href="#" style="text-decoration:none">тесты</a>
+      <a href="#" style="text-decoration:none">игры</a>
+    </nav>
+    <a href="#" style="background:rgb(22,10,10);color:rgb(251,250,246);border-radius:999px;padding:12px 22px;font-weight:500;font-size:15px;line-height:19px;text-decoration:none">заполнить форму</a>
+  </header>
+
+  <section data-screen-label="Hero" style="position:relative;max-width:1360px;margin:0 auto;padding:72px 40px 56px">
+    <div style="display:flex;gap:10px;align-items:center;margin-bottom:28px">
+      <span style="background:rgb(249,246,141);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;line-height:16.5px">Буллинг</span>
+      <span style="border-radius:999px;padding:5px 13px;font-weight:700;font-size:13px;line-height:16.5px;box-shadow:inset 0 0 0 1.5px rgb(22,10,10)">Статья</span>
+    </div>
+    <h1 style="margin:0;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(52px,10.5vw,152px);line-height:1.02;letter-spacing:-0.045em;text-wrap:balance">кибер&shy;буллинг</h1>
+    <p style="margin:24px 0 0;max-width:880px;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(22px,2.4vw,32px);line-height:1.25;letter-spacing:-0.02em;text-wrap:pretty">как распознать травлю в сети и что делать, если тебя обижают</p>
+    <sc-if value="{{ showCharacters }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;right:40px;top:96px;width:150px;height:130px;background:rgb(249,246,141);clip-path:polygon(25% 0,75% 0,100% 50%,75% 100%,25% 100%,0 50%);display:flex;gap:12px;align-items:center;justify-content:center;padding-left:40px;padding-bottom:8px">
+        <span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span>
+      </div>
+      <div style="position:absolute;right:190px;top:250px;width:103px;height:103px;border-radius:50%;background:rgb(231,203,251);transform:rotate(12deg);display:flex;gap:13px;align-items:flex-end;padding:0 0 28px 24px">
+        <span style="width:13px;height:13px;border-radius:4px;background:rgb(22,10,10)"></span><span style="width:13px;height:13px;border-radius:4px;background:rgb(22,10,10)"></span>
+      </div>
+    </sc-if>
+  </section>
+
+  <section data-screen-label="Вступление" style="max-width:1360px;margin:0 auto;padding:16px 40px 0">
+    <div style="position:relative;background:rgb(249,246,141);border-radius:10px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:minmax(0,1fr) auto;gap:32px;align-items:start">
+      <div style="position:absolute;left:28px;top:-16px;display:flex;gap:48px">
+        <span style="width:56px;height:17px;border-radius:8px 8px 0 0;background:rgb(249,246,141)"></span><span style="width:56px;height:17px;border-radius:8px 8px 0 0;background:rgb(249,246,141)"></span>
+      </div>
+      <div style="max-width:900px;display:flex;flex-direction:column;gap:20px">
+        <p style="margin:0;font-size:clamp(18px,1.6vw,22px);line-height:1.5;text-wrap:pretty">Представь, что ты играешь в любимую онлайн-игру или листаешь ленту в соцсети. Вдруг кто-то начинает писать обидные слова, обзываться или выкладывать чужие неудачные фотографии, чтобы все посмеялись.</p>
+        <p style="margin:0;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(20px,2vw,29px);line-height:1.3;letter-spacing:-0.02em;text-wrap:pretty">Это не просто глупая шутка. У такого поведения есть официальное название — кибербуллинг, или травля в интернете.</p>
+      </div>
+      <div style="width:64px;height:64px;border-radius:50%;background:rgb(255,255,255);display:flex;gap:8px;align-items:center;justify-content:center">
+        <span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span><span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span>
+      </div>
+    </div>
+  </section>
+
+  <section data-screen-label="Как понять" style="max-width:1360px;margin:0 auto;padding:120px 40px 0">
+    <h2 style="margin:0 0 40px;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(32px,4.2vw,54px);line-height:1.15;letter-spacing:-0.03em;text-wrap:balance">Как понять, что это кибербуллинг?</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));gap:16px">
+      <div style="border-radius:10px;box-shadow:inset 0 0 0 1.5px rgb(22,10,10);padding:28px;display:flex;flex-direction:column;gap:12px;min-height:200px">
+        <span style="align-self:flex-start;background:rgb(255,255,255);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;line-height:16.5px;box-shadow:inset 0 0 0 1px rgb(234,234,234)">Ссора</span>
+        <p style="margin:auto 0 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:24px;line-height:30px;letter-spacing:-0.48px">Обычная ссора заканчивается быстро.</p>
+      </div>
+      <div style="border-radius:10px;background:rgb(22,10,10);color:rgb(255,255,255);padding:28px;display:flex;flex-direction:column;gap:12px;min-height:200px">
+        <div style="display:flex;justify-content:space-between;align-items:flex-start">
+          <span style="background:rgb(249,246,141);color:rgb(22,10,10);border-radius:999px;padding:6px 14px;font-weight:700;font-size:13px;line-height:16.5px">Травля</span>
+          <span style="width:64px;height:64px;border-radius:50%;background:rgb(231,203,251);display:flex;gap:8px;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span><span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span></span>
+        </div>
+        <p style="margin:auto 0 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:24px;line-height:30px;letter-spacing:-0.48px;text-wrap:pretty">Если один или несколько человек постоянно и намеренно пытаются тебя задеть, обидеть или испугать в сети — это уже травля.</p>
+      </div>
+    </div>
+
+    <h3 style="margin:72px 0 36px;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(22px,2.2vw,29px);line-height:1.25;letter-spacing:-0.02em">Вот как это бывает чаще всего:</h3>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,230px),1fr));gap:32px 12px">
+      <sc-for list="{{ forms }}" as="f" hint-placeholder-count="5">
+        <div style="position:relative;border-radius:10px;background:{{ f.bg }};color:{{ f.fg }};padding:24px;min-height:300px;display:flex;flex-direction:column;gap:12px">
+          <div style="position:absolute;left:24px;top:-16px;display:flex;gap:40px">
+            <span style="width:48px;height:17px;border-radius:8px 8px 0 0;background:{{ f.bg }}"></span><span style="width:48px;height:17px;border-radius:8px 8px 0 0;background:{{ f.bg }}"></span>
+          </div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start">
+            <span style="background:{{ f.pill }};color:rgb(22,10,10);border-radius:999px;padding:6px 12px;font-weight:700;font-size:13px;line-height:16.5px">{{ f.n }}</span>
+            <span style="width:56px;height:56px;border-radius:{{ f.faceRadius }};background:{{ f.face }};display:flex;gap:8px;align-items:center;justify-content:center"><span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span><span style="width:8px;height:8px;border-radius:2px;background:rgb(22,10,10)"></span></span>
+          </div>
+          <p style="margin:auto 0 0;font-family:Unbounded,sans-serif;font-weight:700;font-size:22px;line-height:27.5px;letter-spacing:-0.44px;text-wrap:balance">{{ f.title }}</p>
+          <p style="margin:0;font-size:16px;line-height:22px;text-wrap:pretty">{{ f.text }}</p>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Правило четырех шагов" style="max-width:1360px;margin:0 auto;padding:120px 40px 0">
+    <h2 style="margin:0 0 40px;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(32px,4.2vw,54px);line-height:1.15;letter-spacing:-0.03em;text-wrap:balance">Правило четырех шагов: что делать?</h2>
+    <div style="position:relative;background:rgb(231,203,251);border-radius:10px;padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr));gap:32px 56px;align-items:center">
+      <p style="margin:0;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(30px,3.6vw,54px);line-height:1.1;letter-spacing:-0.03em;text-wrap:balance">Ты в этом не&nbsp;виноват</p>
+      <div style="display:flex;flex-direction:column;gap:20px;align-items:flex-start">
+        <p style="margin:0;font-size:17px;line-height:1.5;text-wrap:pretty">Если ты столкнулся с обидчиками, главное — помнить это. Люди, которые обижают других, часто делают это из-за собственных проблем или от скуки. Не давай им испортить тебе настроение.</p>
+        <span style="background:rgb(22,10,10);color:rgb(255,255,255);border-radius:999px;padding:13px 22px;font-family:Unbounded,sans-serif;font-weight:600;font-size:16px;line-height:20px;letter-spacing:-0.3px">Действуй по этому плану ↓</span>
+      </div>
+      <sc-if value="{{ showCharacters }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;right:48px;top:-34px;width:120px;height:72px;border-radius:22px;background:rgb(206,238,251);transform:rotate(6deg);display:flex;gap:12px;align-items:center;padding-left:28px">
+          <span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span>
+        </div>
+      </sc-if>
+    </div>
+
+    <div style="margin-top:48px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,520px),1fr));gap:36px 16px">
+      <sc-for list="{{ steps }}" as="s" hint-placeholder-count="4">
+        <div style="position:relative;border-radius:10px;background:{{ s.bg }};color:{{ s.fg }};padding:28px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:8px 28px;align-items:start;min-height:260px">
+          <div style="position:absolute;left:28px;top:-16px;display:flex;gap:48px">
+            <span style="width:56px;height:17px;border-radius:8px 8px 0 0;background:{{ s.bg }}"></span><span style="width:56px;height:17px;border-radius:8px 8px 0 0;background:{{ s.bg }}"></span>
+          </div>
+          <span style="font-family:Unbounded,sans-serif;font-weight:600;font-size:92px;line-height:0.95;letter-spacing:-3.2px">{{ s.n }}</span>
+          <div style="display:flex;flex-direction:column;gap:14px;padding-top:6px">
+            <p style="margin:0;font-family:Unbounded,sans-serif;font-weight:700;font-size:24px;line-height:30px;letter-spacing:-0.48px">{{ s.title }}</p>
+            <p style="margin:0;font-size:16px;line-height:24px;text-wrap:pretty">{{ s.text }}</p>
+            <sc-if value="{{ s.note }}" hint-placeholder-val="{{ false }}">
+              <span style="align-self:flex-start;background:{{ s.noteBg }};color:rgb(22,10,10);border-radius:999px;padding:10px 18px;font-weight:500;font-size:15px;line-height:19px">{{ s.note }}</span>
+            </sc-if>
+          </div>
+        </div>
+      </sc-for>
+    </div>
+  </section>
+
+  <section data-screen-label="Итог" style="position:relative;max-width:1360px;margin:0 auto;padding:140px 40px 140px;display:flex;justify-content:center">
+    <div style="position:relative;max-width:823px;width:100%;background:rgb(214,238,116);border-radius:46px;padding:clamp(36px,5vw,56px) clamp(24px,6vw,72px);display:flex;flex-direction:column;align-items:center;gap:20px;text-align:center">
+      <p style="margin:0;font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(30px,4.4vw,56px);line-height:1.15;letter-spacing:-0.03em;text-wrap:balance">Интернет — классное место</p>
+      <p style="margin:0;max-width:540px;font-size:20.58px;line-height:28.8px;text-wrap:pretty">Для общения, учебы и игр. Не позволяй чужой грубости мешать тебе получать от него удовольствие.</p>
+      <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:8px">
+        <span style="background:rgb(251,250,246);border-radius:999px;padding:14px 24px;font-weight:500;font-size:18px;line-height:23px">Будь вежлив сам</span>
+        <span style="background:rgb(22,10,10);color:rgb(251,250,246);border-radius:999px;padding:14px 24px;font-weight:500;font-size:18px;line-height:23px">Не бойся просить о помощи</span>
+      </div>
+      <sc-if value="{{ showCharacters }}" hint-placeholder-val="{{ true }}">
+        <div style="position:absolute;right:-24px;top:-48px;width:103px;height:103px;border-radius:50%;background:rgb(231,203,251);transform:rotate(12deg);display:flex;gap:13px;align-items:flex-end;padding:0 0 28px 24px">
+          <span style="width:13px;height:13px;border-radius:4px;background:rgb(22,10,10)"></span><span style="width:13px;height:13px;border-radius:4px;background:rgb(22,10,10)"></span>
+        </div>
+      </sc-if>
+    </div>
+    <sc-if value="{{ showCharacters }}" hint-placeholder-val="{{ true }}">
+      <div style="position:absolute;left:60px;top:250px;width:150px;height:130px;background:rgb(249,246,141);display:flex;gap:12px;align-items:center;justify-content:center;padding-left:40px">
+        <span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span>
+      </div>
+      <div style="position:absolute;right:60px;bottom:120px;width:156px;height:96px;border-radius:22px;background:rgb(206,238,251);transform:rotate(6deg);display:flex;gap:12px;align-items:center;padding-left:30px">
+        <span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span>
+      </div>
+    </sc-if>
+  </section>
+
+  <footer style="background:rgb(255,255,255)">
+    <div style="display:flex;align-items:center;justify-content:center;gap:clamp(16px,4vw,56px);padding:24px 24px;flex-wrap:wrap">
+      <span style="width:110px;height:76px;background:rgb(231,203,251);display:flex;gap:12px;align-items:center;justify-content:center"><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span></span>
+      <span style="font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(48px,6.4vw,92px);line-height:1.2;letter-spacing:-0.035em">цифрик</span>
+      <span style="width:150px;height:76px;border-radius:999px;background:rgb(214,238,116);transform:rotate(-8deg);display:flex;gap:12px;align-items:center;justify-content:center"><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span><span style="width:12px;height:12px;border-radius:3px;background:rgb(22,10,10)"></span></span>
+      <span style="font-family:Unbounded,sans-serif;font-weight:600;font-size:clamp(48px,6.4vw,92px);line-height:1.2;letter-spacing:-0.035em">медиа</span>
+    </div>
+    <div style="background:rgb(0,0,0);color:rgb(255,255,255);border-radius:10px 10px 0 0;padding:20px 24px 0">
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:24px;font-size:16px;line-height:20.5px">
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-weight:700;margin-bottom:6px">Навигация</span>
+          <a href="#" style="color:rgb(255,255,255);opacity:.8">о нас</a><a href="#" style="color:rgb(255,255,255);opacity:.8">истории</a><a href="#" style="color:rgb(255,255,255);opacity:.8">тесты</a>
+        </div>
+        <div style="display:flex;flex-direction:column;gap:2px">
+          <span style="font-weight:700;margin-bottom:6px">Темы</span>
+          <a href="#" style="color:rgb(255,255,255);opacity:.8">фейки, незнакомцы, мошенники</a><a href="#" style="color:rgb(255,255,255);opacity:.8">буллинг, личные данные</a>
+        </div>
+      </div>
+      <div style="display:flex;gap:16px;flex-wrap:wrap;margin:48px 0 40px">
+        <a href="#" style="flex:1 1 140px;max-width:182px;aspect-ratio:182/180;border-radius:50%;background:rgb(206,238,251);display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-weight:700;font-size:18px;text-decoration:none">телеграм</a>
+        <a href="#" style="flex:1 1 140px;max-width:182px;aspect-ratio:182/180;border-radius:50%;background:rgb(231,203,251);display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-weight:700;font-size:18px;text-decoration:none">вконтакте</a>
+        <a href="#" style="flex:1 1 140px;max-width:182px;aspect-ratio:182/180;border-radius:50%;background:rgb(249,246,141);display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-weight:700;font-size:18px;text-decoration:none">форма</a>
+        <a href="#" style="flex:1 1 140px;max-width:182px;aspect-ratio:182/180;border-radius:50%;background:rgb(214,238,116);display:flex;align-items:center;justify-content:center;font-family:Unbounded,sans-serif;font-weight:700;font-size:18px;text-decoration:none">почта</a>
+      </div>
+      <div style="border:1px solid rgb(255,255,255);display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;padding:12px;font-size:12px;line-height:15px">
+        <span>медиа цифровой грамотности для детей</span><span>все права защищены каринкой и алинкой!</span>
+      </div>
+      <div style="height:20px"></div>
+    </div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;showCharacters&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  renderVals() {
+    const ink = 'rgb(22,10,10)', white = 'rgb(255,255,255)';
+    const blue = 'rgb(206,238,251)', green = 'rgb(214,238,116)', purple = 'rgb(231,203,251)', yellow = 'rgb(249,246,141)';
+    return {
+      showCharacters: this.props.showCharacters ?? true,
+      forms: [
+        { n: '01', title: 'Злые комментарии', text: 'Под твоими фото или видео.', bg: blue, fg: ink, pill: white, face: yellow, faceRadius: '50%' },
+        { n: '02', title: 'Оскорбления', text: 'В личных сообщениях или групповых чатах.', bg: green, fg: ink, pill: white, face: purple, faceRadius: '16px' },
+        { n: '03', title: 'Фейковые страницы', text: 'Создание фальшивых страниц от твоего имени.', bg: purple, fg: ink, pill: white, face: blue, faceRadius: '999px' },
+        { n: '04', title: 'Исключение', text: 'Из онлайн-игры или общего чата просто так, чтобы обидеть.', bg: yellow, fg: ink, pill: white, face: white, faceRadius: '50%' },
+        { n: '05', title: 'Сплетни и слухи', text: 'Которые распространяют в интернете.', bg: ink, fg: white, pill: green, face: purple, faceRadius: '16px' }
+      ],
+      steps: [
+        { n: '1', title: 'Не отвечай', text: 'Обидчики (их называют троллями) только и ждут, что ты начнешь злиться или плакать в ответ. Без твоей реакции им быстро станет скучно.', bg: green, fg: ink },
+        { n: '2', title: 'Заблокируй их', text: 'В любой соцсети или игре есть кнопка «Заблокировать» или «Добавить в черный список». Пользуйся ей смело!', bg: blue, fg: ink, note: 'Заблокировать', noteBg: white },
+        { n: '3', title: 'Сделай скриншот', text: 'Сохрани доказательства (снимки экрана) с обидными словами. Они пригодятся, если придется жаловаться в поддержку сайта или взрослым.', bg: yellow, fg: ink },
+        { n: '4', title: 'Расскажи родителям или учителю', text: 'Рассказать о проблеме взрослым — это не «стукачество», это защита себя. Родители и учителя обязательно помогут во всем разобраться и защитят тебя.', bg: ink, fg: white, note: 'Это защита себя', noteBg: purple }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
