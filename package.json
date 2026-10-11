@@ -4,6 +4,7 @@
   "private": true,
   "description": "Статический сайт Tcifrik media",
   "scripts": {
+    "dev": "gulp start",
     "build": "gulp build",
     "watch": "gulp watch",
     "start": "gulp start",
