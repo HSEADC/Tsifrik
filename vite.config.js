@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  base: '/Tsifrik/',
   input: [
     'index.html',
     'pages/about.html',
