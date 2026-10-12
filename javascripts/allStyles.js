@@ -1,13 +1,8 @@
-// Подключает все CSS-файлы проекта. Путь считается от расположения этого скрипта,
-// поэтому файл работает и из index.html, и из pages/*.html
-(function () {
-  const styles = ['reset', 'fonts', 'layout', 'style', 'home', 'stories', 'animation', 'adaptive'];
-  const base = new URL('../stylesheets/', document.currentScript.src);
-
-  styles.forEach((name) => {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = new URL(name + '.css', base).href;
-    document.head.appendChild(link);
-  });
-})();
+import '../stylesheets/reset.css'
+import '../stylesheets/fonts.css'
+import '../stylesheets/layout.css'
+import '../stylesheets/style.css'
+import '../stylesheets/home.css'
+import '../stylesheets/stories.css'
+import '../stylesheets/animation.css'
+import '../stylesheets/adaptive.css'
