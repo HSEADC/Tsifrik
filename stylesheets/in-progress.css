@@ -1,0 +1,150 @@
+/* Медиа в разработке: заголовок и текст по центру, полоса со стрелкой к форме,
+   персонажи и стикеры поверх композиции, координаты макета 1440 */
+.soon {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.8rem;
+    height: 66.5rem;
+    padding: 4.8rem 8rem 0;
+    overflow: hidden;
+}
+
+.soon::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 46.9rem;
+    height: 16rem;
+    background-color: var(--color-band);
+}
+
+.soon__title {
+    position: relative;
+    width: 95rem;
+}
+
+.soon__title img {
+    width: 100%;
+    height: auto;
+}
+
+.soon__text {
+    position: relative;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    letter-spacing: -0.018rem;
+    text-align: center;
+}
+
+.soon__arrow {
+    position: absolute;
+    left: 50%;
+    top: 49.2rem;
+    width: 2.7rem;
+    translate: -50% 0;
+    transition: translate 0.2s ease;
+}
+
+.soon__arrow:hover {
+    translate: -50% 0.8rem;
+}
+
+.soon__arrow img {
+    width: 100%;
+    height: auto;
+}
+
+.soon__sticker {
+    position: absolute;
+    height: auto;
+}
+
+.soon__sticker--play {
+    left: 112.5rem;
+    top: 2.7rem;
+    width: 8rem;
+}
+
+.soon__sticker--learn {
+    left: 21.5rem;
+    top: 16.45rem;
+    width: 9.1rem;
+}
+
+.soon__character {
+    position: absolute;
+    height: auto;
+}
+
+.soon__character--star {
+    left: 4rem;
+    top: 2.7rem;
+    width: 17.7rem;
+}
+
+.soon__character--question {
+    left: 116.5rem;
+    top: 36.6rem;
+    width: 19.5rem;
+}
+
+@media (max-width: 1023px) {
+    /* мобильного макета нет: та же композиция в колонке 390 */
+    .soon {
+        gap: 1.6rem;
+        height: auto;
+        padding: 5.6rem 2rem 16.8rem;
+    }
+
+    .soon::before {
+        top: auto;
+        bottom: 2.4rem;
+        height: 12rem;
+    }
+
+    .soon__title {
+        width: 33rem;
+    }
+
+    .soon__text {
+        font-size: 2rem;
+        line-height: 2.6rem;
+        letter-spacing: -0.01rem;
+    }
+
+    .soon__arrow {
+        top: auto;
+        bottom: 5.5rem;
+        width: 2rem;
+    }
+
+    .soon__sticker--play {
+        left: auto;
+        right: max(2rem, calc(50% - 17.5rem));
+        top: 1.6rem;
+        width: 6.4rem;
+    }
+
+    .soon__sticker--learn {
+        left: max(1.2rem, calc(50% - 18.3rem));
+        top: 12.4rem;
+        width: 7.2rem;
+    }
+
+    .soon__character--star {
+        left: max(0.4rem, calc(50% - 19.1rem));
+        top: 0.8rem;
+        width: 7.6rem;
+    }
+
+    .soon__character--question {
+        left: auto;
+        right: max(0.4rem, calc(50% - 19.1rem));
+        top: auto;
+        bottom: 9.6rem;
+        width: 9rem;
+    }
+}

@@ -1,0 +1,1648 @@
+/* Истории: первый экран. Координаты макета 1440 без шапки (минус 92px) */
+.story-hero {
+    position: relative;
+    height: 60.4rem;
+    overflow: hidden;
+}
+
+.story-hero::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 36.1rem;
+    height: 22rem;
+    background-color: var(--color-band);
+}
+
+.story-hero > * {
+    position: absolute;
+}
+
+.story-hero__title {
+    left: 29.425rem;
+    top: 4.5875rem;
+    width: 87.6rem;
+}
+
+.story-hero__title img {
+    width: 100%;
+    height: auto;
+}
+
+.story-hero__tag {
+    left: 59.014rem;
+    top: 17.498rem;
+    width: 24rem;
+}
+
+.story-hero__button {
+    left: calc(50% - 0.028rem);
+    top: 43.957rem;
+    translate: -50% 0;
+}
+
+.story-hero__character--hash {
+    left: 1rem;
+    top: 17.099rem;
+    width: 50rem;
+}
+
+.story-hero__character--star {
+    left: 92.078rem;
+    top: 16.506rem;
+    width: 51.5rem;
+}
+
+.story-hero__quotes {
+    left: 121.722rem;
+    top: 16.276rem;
+    width: 12.329rem;
+    height: 6.71rem;
+}
+
+.story-hero__quotes img {
+    position: absolute;
+    top: 0;
+    width: 6.839rem;
+    height: auto;
+}
+
+.story-hero__arrows {
+    width: 8.1rem;
+}
+
+.story-hero__arrows--left {
+    left: 18.152rem;
+    top: 16.4rem;
+}
+
+.story-hero__arrows--right {
+    left: 83.3rem;
+    top: 39.7rem;
+}
+
+/* курсор в макете повёрнут и отражён: исходный знак 58×65 в рамке 82×85 */
+.story-cursor {
+    display: grid;
+    place-items: center;
+    width: 8.239rem;
+    height: 8.519rem;
+}
+
+.story-cursor img {
+    width: 5.785rem;
+    height: auto;
+    rotate: -150.62deg;
+    scale: 1 -1;
+}
+
+.story-hero__cursor {
+    left: 51.839rem;
+    top: 44.02rem;
+}
+
+.story-hero__bars {
+    left: 1.942rem;
+    top: 23.419rem;
+    width: 12.5rem;
+}
+
+/* Истории: ситуация. Текст слева, окно чата справа на розовой полосе */
+.story-case {
+    position: relative;
+    height: 61.2rem;
+    overflow: hidden;
+}
+
+.story-case::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40.8rem;
+    bottom: 0;
+    background-color: var(--color-pink-light);
+}
+
+.story-case > * {
+    position: absolute;
+}
+
+.story-case__title {
+    left: 7.961rem;
+    top: 11rem;
+    width: 42rem;
+}
+
+.story-case__title img {
+    width: 100%;
+    height: auto;
+}
+
+.story-case__tag {
+    left: 43.595rem;
+    top: 7.776rem;
+    width: 16rem;
+}
+
+.story-case__text {
+    left: 7.961rem;
+    top: 19.4rem;
+    width: 42rem;
+    font-size: 2.27rem;
+    line-height: 2.97rem;
+}
+
+.story-case__quotes {
+    left: 9.9rem;
+    top: 32.2rem;
+    width: 8.322rem;
+    height: 4.529rem;
+}
+
+.story-case__quotes img {
+    position: absolute;
+    top: 0;
+    width: 4.616rem;
+    height: auto;
+}
+
+.story-case__face--semicolon {
+    left: 51.842rem;
+    top: 26.622rem;
+    width: 1.6rem;
+}
+
+.story-case__face--brace {
+    left: 53.026rem;
+    top: 25.456rem;
+    width: 3.1rem;
+}
+
+.story-chat {
+    left: 74.3rem;
+    top: 19.4rem;
+    width: 60rem;
+    overflow: hidden;
+    box-shadow: -1.2rem 0 0 var(--color-violet);
+}
+
+.story-chat__messages {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 2rem;
+}
+
+.story-chat__row {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2rem;
+}
+
+.story-chat__row--head {
+    align-items: center;
+}
+
+.story-chat__avatar {
+    display: grid;
+    flex-shrink: 0;
+    place-items: center;
+    width: 4.4rem;
+    height: 4.4rem;
+    border: 0.2rem solid var(--color-text);
+    border-radius: 50%;
+    background-color: var(--color-pink);
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    font-weight: 700;
+}
+
+.story-chat__meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    font-weight: 400;
+}
+
+.story-chat__time {
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.story-chat__bubble {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 0.6rem;
+    min-width: 0;
+    padding: 1.2rem 1.6rem;
+    border: 0.2rem solid var(--color-text);
+    border-radius: 0.2rem 1rem 1rem;
+}
+
+.story-chat__message {
+    font-size: 2.2rem;
+    line-height: 3rem;
+}
+
+/* «печатает…» над сообщениями */
+.story-chat__typing {
+    display: flex;
+    gap: 1.2rem;
+    font-size: 1.3rem;
+    line-height: 1.7rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.story-chat__bubble--pink {
+    background-color: var(--color-pink);
+}
+
+.story-chat__input {
+    padding: 1.4rem 2.4rem;
+    border-top: 0.2rem solid var(--color-text);
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+/* Истории: первая проверка. Окно с вариантами ответа по центру */
+.story-check {
+    position: relative;
+    height: 61.2rem;
+    overflow: hidden;
+}
+
+.story-check > * {
+    position: absolute;
+}
+
+.story-check__title {
+    left: 7.961rem;
+    top: 9.2rem;
+    width: 70.8rem;
+}
+
+.story-check__title img {
+    width: 100%;
+    height: auto;
+}
+
+.story-check__text {
+    left: 7.961rem;
+    top: 19.4rem;
+    width: 42rem;
+    font-size: 2.27rem;
+    line-height: 2.97rem;
+}
+
+.story-check__character {
+    left: 109.572rem;
+    top: 22.644rem;
+    width: 27.6rem;
+}
+
+.story-check__window {
+    left: 50%;
+    top: 34.037rem;
+    width: 68.6rem;
+    overflow: hidden;
+    translate: -50% 0;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-green);
+}
+
+.story-check__body {
+    display: flex;
+    flex-direction: column;
+    gap: 1.6rem;
+    padding: 2.4rem 2.8rem 2.8rem;
+}
+
+.story-check__question {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+.story-check__options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+
+.story-option {
+    height: 4.4rem;
+    padding: 0 2rem;
+    border: 0.2rem solid var(--color-text);
+    border-radius: 1rem;
+    background-color: #fff;
+    font-size: 1.5rem;
+    line-height: 1.9rem;
+    font-weight: 400;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.story-option:hover {
+    background-color: var(--color-band);
+}
+
+/* выбранный вариант: в макете состояния нет, тёмный как основная кнопка */
+.story-option[aria-pressed='true'] {
+    background-color: var(--color-text);
+    color: var(--color-light);
+}
+
+/* Истории: улика № 1. Карточка по центру на голубой полосе */
+.story-clue {
+    position: relative;
+    height: 46.3rem;
+    overflow: hidden;
+}
+
+.story-clue::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15.743rem;
+    height: 22rem;
+    background-color: var(--color-band);
+}
+
+.story-clue > * {
+    position: absolute;
+}
+
+.story-clue__card {
+    left: 50%;
+    top: 10.75rem;
+    width: 68.6rem;
+    overflow: hidden;
+    translate: -50% 0;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-brand);
+}
+
+.story-card__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.2rem;
+    padding: 2.4rem 2.8rem 2.8rem;
+}
+
+.story-card__label {
+    padding: 0.4rem 0.8rem;
+    border-radius: 0.2rem;
+    background-color: var(--color-band);
+    font-size: 1.3rem;
+    line-height: 1.6rem;
+    font-weight: 700;
+}
+
+.story-card__label--green {
+    background-color: var(--color-green);
+}
+
+.story-card__label--lilac {
+    background-color: var(--color-lilac);
+}
+
+.story-card__title {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+.story-card__text {
+    font-size: 1.6rem;
+    line-height: 2.2rem;
+    font-weight: 400;
+}
+
+.story-clue__quotes {
+    left: 108.822rem;
+    top: 10.445rem;
+    width: 12.329rem;
+    height: 6.71rem;
+}
+
+.story-clue__quotes img {
+    position: absolute;
+    top: 0;
+    width: 6.839rem;
+    height: auto;
+}
+
+.story-clue__arrows {
+    left: 21.897rem;
+    top: 7.35rem;
+    width: 8.1rem;
+}
+
+.story-clue__bars {
+    left: 18.904rem;
+    top: 29.75rem;
+    width: 12.5rem;
+}
+
+/* Истории: ссылка с секретом. Окно чата из «ситуации», только шире и по центру */
+.story-link {
+    position: relative;
+    height: 84.4rem;
+    overflow: hidden;
+}
+
+.story-link > * {
+    position: absolute;
+}
+
+.story-link__title {
+    left: 29.409rem;
+    top: 4.414rem;
+    width: 84.3rem;
+}
+
+.story-link__title img {
+    width: 100%;
+    height: auto;
+}
+
+.story-link__tag {
+    left: 58.9rem;
+    top: 13.536rem;
+    width: 22.3rem;
+}
+
+/* широкое окно чата по центру экрана */
+.story-chat--wide {
+    left: 50%;
+    width: 68.6rem;
+    translate: -50% 0;
+}
+
+.story-chat--wide .story-chat__messages {
+    padding: 2.4rem;
+}
+
+.story-link__chat {
+    top: 34.157rem;
+}
+
+.story-link__character {
+    left: 93.82rem;
+    top: 33rem;
+    width: 46.6rem;
+}
+
+/* Истории: проверь адрес. Настоящий и поддельный адрес рядом */
+.story-address {
+    position: relative;
+    height: 61.2rem;
+    overflow: hidden;
+}
+
+.story-address::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 33.7rem;
+    height: 22rem;
+    background-color: var(--color-band);
+}
+
+.story-address > * {
+    position: absolute;
+}
+
+.story-address__text {
+    left: 8rem;
+    top: 10.3rem;
+    width: 74.9rem;
+    font-size: 2.27rem;
+    line-height: 2.97rem;
+}
+
+.story-address__window {
+    left: 50%;
+    top: 25rem;
+    width: 68.6rem;
+    overflow: hidden;
+    translate: -50% 0;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-green);
+}
+
+.story-address__body {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    padding: 2.4rem 2.8rem 2.8rem;
+}
+
+.story-address__site {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+.story-address__compare {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+}
+
+.story-address__card {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+    min-width: 0;
+    padding: 2rem 2.4rem 2.4rem;
+    border: 0.2rem solid var(--color-text);
+    border-radius: 1rem;
+    background-color: #fff;
+    text-align: left;
+}
+
+.story-address__card--fake {
+    transition: background-color 0.2s;
+}
+
+.story-address__card--fake:hover {
+    background-color: var(--color-band);
+}
+
+.story-address__label {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.story-address__url {
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    font-weight: 300;
+}
+
+/* «разбор»: цифра 0 вместо буквы «o» */
+.story-address__trap {
+    border-radius: 0.2rem;
+    transition: background-color 0.2s;
+}
+
+.story-address__card--fake[aria-pressed='true'] .story-address__trap {
+    background-color: var(--color-pink-bright);
+}
+
+.story-address__quotes {
+    left: 8rem;
+    top: 41rem;
+    width: 12.329rem;
+    height: 6.71rem;
+}
+
+.story-address__quotes img,
+.story-gift__quotes img,
+.story-clues__quotes img {
+    position: absolute;
+    top: 0;
+    width: 6.839rem;
+    height: auto;
+}
+
+.story-address__arrows {
+    left: 107rem;
+    top: 10.2rem;
+    width: 8.1rem;
+}
+
+.story-address__bars {
+    left: 123.2rem;
+    top: 19rem;
+    width: 12.5rem;
+}
+
+/* Истории, глава 3: что внутри подарка? Одна длинная сцена, координаты макета */
+.story-gift {
+    position: relative;
+    height: 318.8rem;
+    overflow: hidden;
+}
+
+.story-gift::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 112.384rem;
+    height: 32.233rem;
+    background-color: var(--color-band);
+}
+
+.story-gift > * {
+    position: absolute;
+}
+
+.story-gift__title {
+    left: 30.853rem;
+    top: 8.28rem;
+    width: 80.9rem;
+}
+
+.story-gift__title img,
+.story-gift__heading img {
+    width: 100%;
+    height: auto;
+}
+
+.story-gift__box {
+    left: 45.715rem;
+    top: 41.427rem;
+    width: 51.871rem;
+    height: 43.17rem;
+}
+
+.story-gift__box > * {
+    position: absolute;
+}
+
+.story-gift__box-body {
+    left: 0;
+    top: 4.416rem;
+    width: 51.871rem;
+}
+
+.story-gift__box-line {
+    left: 1.506rem;
+    top: 11.643rem;
+    width: 50.364rem;
+    height: 0.621rem;
+    background-color: var(--color-pink);
+}
+
+.story-gift__box-ribbon {
+    left: 16.669rem;
+    top: 0;
+    width: 18.033rem;
+}
+
+.story-gift__quotes {
+    left: 101.904rem;
+    top: 33.305rem;
+    width: 12.329rem;
+    height: 6.71rem;
+}
+
+.story-gift__bars {
+    width: 12.5rem;
+}
+
+.story-gift__bars--top {
+    left: 24.428rem;
+    top: 65.22rem;
+}
+
+.story-gift__bars--bottom {
+    left: 31.497rem;
+    top: 294.436rem;
+}
+
+.story-fake {
+    left: 50%;
+    top: 104.4rem;
+    width: 68.6rem;
+    overflow: hidden;
+    translate: -50% 0;
+    box-shadow: -1.2rem 0 0 var(--color-pink);
+}
+
+.story-fake__body {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+    padding: 2.8rem 3.2rem 3.2rem;
+}
+
+.story-fake__heading {
+    font-size: 2.4rem;
+    line-height: 3rem;
+    font-weight: 400;
+}
+
+.story-fake__field {
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    align-self: stretch;
+}
+
+.story-fake__label {
+    font-size: 1.4rem;
+    line-height: 1.8rem;
+    font-weight: 400;
+    color: var(--color-secondary);
+}
+
+.story-fake__value {
+    padding: 0.8rem 0.8rem 0.8rem 2.8rem;
+    border-radius: 10rem;
+    background-color: var(--color-field);
+    font-size: 2.2rem;
+    line-height: 3rem;
+}
+
+.story-fake__value--empty {
+    color: var(--color-secondary);
+}
+
+/* кнопка нарисована, а не настоящая: на этой форме ничего нажимать нельзя */
+.story-fake__button {
+    cursor: default;
+}
+
+.story-fake__button:hover {
+    background-color: var(--color-text);
+}
+
+.story-gift__character--hash {
+    left: 89.246rem;
+    top: 112.699rem;
+    width: 50rem;
+}
+
+.story-gift__character--ampersand {
+    left: 99.158rem;
+    top: 279.119rem;
+    width: 27.6rem;
+}
+
+.story-gift__heading--keys {
+    left: 39.374rem;
+    top: 158.1rem;
+    width: 62.8rem;
+}
+
+.story-gift__heading--phishing {
+    left: 50.25rem;
+    top: 238.7rem;
+    width: 42.9rem;
+}
+
+.story-gift__heading--goal {
+    left: 46.29rem;
+    top: 286.315rem;
+    width: 51rem;
+}
+
+.story-gift__text {
+    font-size: 2.2rem;
+    line-height: 3rem;
+}
+
+.story-gift__text--keys {
+    left: 37.7rem;
+    top: 167.358rem;
+    width: 35.71rem;
+}
+
+.story-gift__text--copy {
+    left: 73.408rem;
+    top: 176.358rem;
+    width: 37.2rem;
+}
+
+.story-gift__text--phishing {
+    left: 37.7rem;
+    top: 250.939rem;
+    width: 36rem;
+}
+
+.story-gift__text--bait {
+    left: 74.61rem;
+    top: 266.78rem;
+    width: 36rem;
+}
+
+.story-gift__goal {
+    left: 50%;
+    top: 294.783rem;
+    width: 46.982rem;
+    translate: -50% 0;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    letter-spacing: -0.018rem;
+    text-align: center;
+}
+
+.story-gift__quiz {
+    left: 50%;
+    top: 199.1rem;
+    width: 68.6rem;
+    overflow: hidden;
+    translate: -50% 0;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-lilac);
+}
+
+.story-gift__quiz-body {
+    padding: 2.4rem 2.8rem 2.8rem;
+}
+
+.story-gift__options {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.story-gift__options .story-option {
+    padding-inline: 2rem;
+    text-align: left;
+}
+
+/* Истории: обратный отсчёт. Тот же чат, сообщения всё настойчивее */
+.story-countdown {
+    position: relative;
+    height: 97.9rem;
+    overflow: hidden;
+}
+
+.story-countdown > * {
+    position: absolute;
+}
+
+.story-countdown__title {
+    left: 7.961rem;
+    top: 9.2rem;
+    width: 75.5rem;
+}
+
+.story-countdown__title img,
+.story-hurry__title img,
+.story-solved__title img {
+    width: 100%;
+    height: auto;
+}
+
+.story-countdown__text {
+    left: 7.961rem;
+    top: 19.4rem;
+    width: 42rem;
+}
+
+.story-countdown__chat {
+    top: 31.9rem;
+    box-shadow: -1.2rem 0 0 var(--color-pink);
+}
+
+/* Истории: зачем такая спешка? Фразы-«торопилки» в рамках */
+.story-hurry {
+    position: relative;
+    height: 51.7rem;
+    overflow: hidden;
+}
+
+.story-hurry > * {
+    position: absolute;
+}
+
+.story-hurry__title {
+    left: 7.961rem;
+    top: 9.2rem;
+    width: 96.1rem;
+}
+
+.story-hurry__text {
+    left: 8rem;
+    top: 19.4rem;
+    width: 74.9rem;
+}
+
+.story-hurry__phrases {
+    left: 0;
+    right: 0;
+    top: 34.2rem;
+}
+
+.story-hurry__phrases li {
+    position: absolute;
+    top: 0;
+    padding: 2rem;
+    border: 0.2rem solid var(--color-text);
+    border-radius: 1rem;
+    background-color: #fff;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-green);
+    font-size: 2.2rem;
+    line-height: 2.8rem;
+    text-align: center;
+    white-space: nowrap;
+}
+
+/* Истории: улика № 3. Та же карточка, что у улики № 1, ниже экран и сиреневая тень */
+.story-clue--pressure {
+    height: 42.3rem;
+}
+
+.story-clue--pressure::before {
+    top: 15.793rem;
+}
+
+.story-clue--pressure .story-clue__card {
+    top: 6.5rem;
+    box-shadow: -1.2rem -1.2rem 0 var(--color-lilac);
+}
+
+.story-clue__character {
+    left: 97.1rem;
+    top: 10.8rem;
+    width: 26rem;
+}
+
+/* Истории: дело раскрыто */
+.story-solved {
+    position: relative;
+    height: 74.4rem;
+    overflow: hidden;
+}
+
+.story-solved > * {
+    position: absolute;
+}
+
+.story-solved__title {
+    left: 36.45rem;
+    top: 32.4rem;
+    width: 69.9rem;
+}
+
+.story-solved__text {
+    left: 50%;
+    top: 43.811rem;
+    width: 44.3rem;
+    translate: -50% 0;
+    font-size: 3.6rem;
+    line-height: 4.4rem;
+    letter-spacing: -0.018rem;
+    text-align: center;
+}
+
+.story-solved__button {
+    left: 61.75rem;
+    top: 56.359rem;
+}
+
+.story-solved__cursor {
+    left: 52.698rem;
+    top: 57.181rem;
+}
+
+.story-solved__character {
+    width: 49.9rem;
+}
+
+/* персонажи обрезаны краями кадра, как в макете */
+.story-solved__character--hash {
+    left: 0;
+    top: 0;
+}
+
+.story-solved__character--star {
+    left: 94.15rem;
+    top: 31.072rem;
+}
+
+.story-solved__bars,
+.story-clues__bars {
+    width: 12.5rem;
+}
+
+.story-solved__bars--green {
+    left: 92.606rem;
+    top: 8.411rem;
+}
+
+.story-solved__bars--pink {
+    left: 29.809rem;
+    top: 52.611rem;
+}
+
+.story-solved__arrows,
+.story-clues__arrows {
+    width: 8.1rem;
+}
+
+.story-solved__arrows--right {
+    left: 116.256rem;
+    top: 12.643rem;
+}
+
+.story-solved__arrows--left {
+    left: 14rem;
+    top: 54.38rem;
+}
+
+/* Истории: все улики. Три карточки стопкой на широкой полосе */
+.story-clues {
+    position: relative;
+    height: 74.4rem;
+    overflow: hidden;
+}
+
+.story-clues::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 15.762rem;
+    height: 45.238rem;
+    background-color: var(--color-band);
+}
+
+.story-clues > * {
+    position: absolute;
+}
+
+.story-clues__list {
+    left: 41.2rem;
+    top: 0;
+    width: 61.6rem;
+}
+
+.story-clues__card {
+    position: absolute;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+}
+
+.story-clues__quotes {
+    left: 123.3rem;
+    top: 6rem;
+    width: 12.329rem;
+    height: 6.71rem;
+}
+
+.story-clues__arrows {
+    left: 115.4rem;
+    top: 37.9rem;
+}
+
+.story-clues__bars {
+    left: 11.1rem;
+    top: 55.468rem;
+}
+
+@media (max-width: 1023px) {
+    /* мобильного макета нет: заголовок, стикер и кнопка в колонке 390, персонажи на полосе */
+    .story-hero {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding: 3.2rem 2rem 18rem;
+    }
+
+    .story-hero::before {
+        top: auto;
+        bottom: 0;
+        height: 26.4rem;
+    }
+
+    .story-hero__title,
+    .story-hero__tag,
+    .story-hero__button {
+        position: relative;
+        left: auto;
+        top: auto;
+    }
+
+    .story-hero__title {
+        width: 33rem;
+    }
+
+    .story-hero__tag {
+        width: 14rem;
+        margin-top: 1.2rem;
+    }
+
+    .story-hero__button {
+        margin-top: 6rem;
+        translate: none;
+    }
+
+    .story-hero__character--hash {
+        left: max(-2rem, calc(50% - 21.5rem));
+        top: auto;
+        bottom: 0;
+        width: 21rem;
+    }
+
+    .story-hero__character--star {
+        left: auto;
+        right: max(-2rem, calc(50% - 21.5rem));
+        top: auto;
+        bottom: 0;
+        width: 21.5rem;
+    }
+
+    .story-hero__cursor {
+        left: calc(50% - 15.6rem);
+        top: auto;
+        bottom: 12.6rem;
+        scale: 0.6;
+    }
+
+    .story-hero__quotes,
+    .story-hero__arrows,
+    .story-hero__bars {
+        display: none;
+    }
+
+    /* ситуация: заголовок, текст и чат одной колонкой, чат на полосе */
+    .story-case {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 6.4rem max(2rem, calc(50% - 17.5rem)) 4rem;
+    }
+
+    .story-case::before {
+        top: auto;
+        height: 18rem;
+    }
+
+    .story-case__title,
+    .story-case__text,
+    .story-chat {
+        position: relative;
+        left: auto;
+        top: auto;
+    }
+
+    .story-case__title {
+        width: 24rem;
+    }
+
+    .story-case__tag {
+        left: auto;
+        right: max(2rem, calc(50% - 17.5rem));
+        top: 3.2rem;
+        width: 11rem;
+    }
+
+    .story-case__text {
+        width: auto;
+        margin-top: 1.2rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-chat {
+        width: calc(100% - 1.2rem);
+        margin: 3.2rem 0 0 1.2rem;
+    }
+
+    .story-chat__messages {
+        padding: 1.6rem;
+    }
+
+    .story-chat__message {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-chat__input {
+        padding: 1.2rem 1.6rem;
+    }
+
+    .story-case__quotes,
+    .story-case__face {
+        display: none;
+    }
+
+    /* первая проверка: колонка, персонаж справа от заголовка */
+    .story-check {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 6.4rem max(2rem, calc(50% - 17.5rem)) 6.4rem;
+    }
+
+    .story-check__title,
+    .story-check__text,
+    .story-check__window {
+        position: relative;
+        left: auto;
+        top: auto;
+    }
+
+    .story-check__title {
+        width: 26rem;
+    }
+
+    .story-check__text {
+        width: auto;
+        max-width: 27rem;
+        margin-top: 1.2rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-check__character {
+        left: auto;
+        right: max(0.4rem, calc(50% - 19.1rem));
+        top: 9.6rem;
+        width: 8.4rem;
+    }
+
+    .story-check__window {
+        width: calc(100% - 1.2rem);
+        margin: 4.4rem 0 0 1.2rem;
+        translate: none;
+    }
+
+    .story-check__body {
+        padding: 2rem 1.6rem 2.4rem;
+    }
+
+    .story-check__question {
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+
+    .story-check__options {
+        gap: 0.8rem;
+    }
+
+    /* улика: карточка во всю колонку на полосе */
+    .story-clue {
+        height: auto;
+        padding: 5.6rem max(2rem, calc(50% - 17.5rem)) 6.4rem;
+    }
+
+    .story-clue::before {
+        top: 9.6rem;
+        height: auto;
+        bottom: 3.2rem;
+    }
+
+    .story-clue__card {
+        position: relative;
+        left: auto;
+        top: auto;
+        width: calc(100% - 1.2rem);
+        margin: 1.2rem 0 0 1.2rem;
+        translate: none;
+    }
+
+    .story-card__body {
+        padding: 2rem 1.6rem 2.4rem;
+    }
+
+    .story-card__title {
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+
+    .story-clue__quotes,
+    .story-clue__arrows,
+    .story-clue__bars {
+        display: none;
+    }
+
+    /* ссылка с секретом, проверь адрес, глава 3: колонка 390, декор скрыт */
+    .story-link,
+    .story-address,
+    .story-gift {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 6.4rem max(2rem, calc(50% - 17.5rem));
+    }
+
+    .story-link > *,
+    .story-address > *,
+    .story-gift > * {
+        position: relative;
+        left: auto;
+        top: auto;
+        translate: none;
+    }
+
+    .story-link__title,
+    .story-gift__title {
+        align-self: center;
+        width: 30rem;
+    }
+
+    .story-link__tag {
+        position: absolute;
+        left: auto;
+        right: max(2rem, calc(50% - 17.5rem));
+        top: 4rem;
+        width: 13rem;
+    }
+
+    .story-chat--wide,
+    .story-address__window,
+    .story-gift__quiz {
+        width: calc(100% - 1.2rem);
+        margin: 4rem 0 0 1.2rem;
+    }
+
+    .story-chat--wide .story-chat__messages {
+        padding: 1.6rem;
+    }
+
+    .story-link__character,
+    .story-gift__character--hash {
+        align-self: flex-end;
+        width: 18rem;
+        margin: -6rem -1rem 0 0;
+    }
+
+    .story-address::before {
+        top: auto;
+        bottom: 3.2rem;
+        height: 16rem;
+    }
+
+    .story-address__text {
+        width: auto;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-address__text br {
+        display: none;
+    }
+
+    .story-address__window {
+        margin-top: 4.4rem;
+    }
+
+    .story-address__body,
+    .story-gift__quiz-body {
+        padding: 2rem 1.6rem 2.4rem;
+    }
+
+    .story-address__site,
+    .story-fake__heading {
+        font-size: 2rem;
+        line-height: 2.6rem;
+    }
+
+    .story-address__compare {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .story-address__card {
+        padding: 1.6rem;
+    }
+
+    .story-address__url {
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-gift::before {
+        content: none;
+    }
+
+    /* подарок шире колонки: уменьшаем целиком, место в потоке подгоняем отступами */
+    .story-gift__box {
+        flex-shrink: 0;
+        align-self: center;
+        margin: -6.5rem 0 -6.5rem;
+        scale: 0.6;
+    }
+
+    .story-gift__box > * {
+        position: absolute;
+    }
+
+    .story-fake {
+        width: calc(100% - 1.2rem);
+        margin: 4rem 0 0 1.2rem;
+    }
+
+    .story-fake__body {
+        gap: 1.6rem;
+        padding: 2rem 1.6rem 2.4rem;
+    }
+
+    .story-fake__value {
+        padding-left: 2rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-gift__heading {
+        align-self: center;
+        margin-top: 4.8rem;
+    }
+
+    .story-gift__heading--keys {
+        width: 28rem;
+        margin-top: 0;
+    }
+
+    .story-gift__heading--phishing {
+        width: 20rem;
+    }
+
+    .story-gift__heading--goal {
+        width: 24rem;
+    }
+
+    .story-gift__text {
+        width: auto;
+        margin-top: 1.6rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-gift__text--copy,
+    .story-gift__text--bait {
+        align-self: flex-end;
+        max-width: 28rem;
+    }
+
+    .story-gift__goal {
+        align-self: center;
+        width: auto;
+        margin-top: 1.2rem;
+        font-size: 2.4rem;
+        line-height: 3rem;
+    }
+
+    .story-gift__character--ampersand {
+        align-self: flex-end;
+        width: 12rem;
+        margin-top: 1.6rem;
+    }
+
+    .story-address__quotes,
+    .story-address__arrows,
+    .story-address__bars,
+    .story-gift__quotes,
+    .story-gift__bars {
+        display: none;
+    }
+
+    /* обратный отсчёт, спешка, все улики: колонка 390 */
+    .story-countdown,
+    .story-hurry,
+    .story-solved,
+    .story-clues {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        height: auto;
+        padding: 6.4rem max(2rem, calc(50% - 17.5rem));
+    }
+
+    .story-countdown > *,
+    .story-hurry > *,
+    .story-solved > *,
+    .story-clues > * {
+        position: relative;
+        left: auto;
+        top: auto;
+        translate: none;
+    }
+
+    .story-countdown__title {
+        width: 30rem;
+    }
+
+    .story-hurry__title {
+        width: 33rem;
+    }
+
+    .story-countdown__text,
+    .story-hurry__text {
+        width: auto;
+        margin-top: 1.2rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    .story-hurry__text br {
+        display: none;
+    }
+
+    .story-hurry__phrases {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 2rem 1.6rem;
+        margin-top: 4rem;
+        padding-left: 1.2rem;
+    }
+
+    /* у фраз в разметке заданы место и ширина для десктопа */
+    .story-hurry__phrases li {
+        position: relative;
+        left: auto !important;
+        width: auto !important;
+        padding: 1.2rem 1.6rem;
+        font-size: 1.8rem;
+        line-height: 2.4rem;
+    }
+
+    /* переносы строк из макета в узкой колонке не нужны */
+    .story-card__text br {
+        display: none;
+    }
+
+    /* место под персонажа под карточкой */
+    .story-clue--pressure {
+        padding-bottom: 12rem;
+    }
+
+    .story-clue__character {
+        position: absolute;
+        left: auto;
+        right: max(-1rem, calc(50% - 20.5rem));
+        top: auto;
+        bottom: 0;
+        width: 10rem;
+    }
+
+    .story-solved {
+        align-items: center;
+        padding-block: 22rem 20rem;
+    }
+
+    .story-solved__title {
+        width: 30rem;
+    }
+
+    .story-solved__text {
+        width: auto;
+        margin-top: 1.2rem;
+        font-size: 2.4rem;
+        line-height: 3rem;
+    }
+
+    .story-solved__button {
+        margin-top: 2.4rem;
+    }
+
+    .story-solved__character {
+        position: absolute;
+        width: 20rem;
+    }
+
+    .story-solved__character--hash {
+        left: -2rem;
+        top: 0;
+    }
+
+    .story-solved__character--star {
+        left: auto;
+        right: -2rem;
+        top: auto;
+        bottom: 0;
+    }
+
+    .story-clues::before {
+        top: 12rem;
+        height: auto;
+        bottom: 12rem;
+    }
+
+    .story-clues__list {
+        display: flex;
+        flex-direction: column;
+        gap: 1.6rem;
+        width: 100%;
+    }
+
+    /* у карточек в разметке задано место для десктопа */
+    .story-clues__card {
+        position: relative;
+        top: auto !important;
+    }
+
+    .story-solved__cursor,
+    .story-solved__bars,
+    .story-solved__arrows,
+    .story-clues__quotes,
+    .story-clues__arrows,
+    .story-clues__bars {
+        display: none;
+    }
+}
