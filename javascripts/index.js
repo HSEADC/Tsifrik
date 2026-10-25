@@ -1,160 +1,252 @@
-document.addEventListener('DOMContentLoaded', () => {
-  // Подсветка активного пункта меню.
-  // Страницы вроде статьи относятся к разделу, но не совпадают с ним по имени файла,
-  // поэтому сначала смотрим на data-section у <body>.
-  const current =
-    document.body.dataset.section || location.pathname.split('/').pop() || 'index.html';
+const HERO_SMALLEST_SCALE = 141 / 233 // самый маленький персонаж в центре строки, из макета
+const HERO_FULL_SIZE_AT = 0.6
+const EMAIL_PATTERN = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/
+const isReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+const modal = document.querySelector('.js-modal')
+let lastFocused = null
 
-  document.querySelectorAll('.nav__link').forEach((link) => {
-    if (link.getAttribute('href').split('/').pop() === current) {
-      link.classList.add('nav__link--active');
-    }
-  });
-});
+initMenu()
+initHeroRun()
+initTopics()
+initChoices()
+initReveals()
+initCharacters()
+initSubscribeForm()
+initModal()
 
-// Отправка форм подписки в Formspree без перезагрузки страницы.
-// Статус выводится в ближайший .js-form-status после формы.
-document.querySelectorAll('.js-subscribe-form').forEach((form) => {
-  const status = form.parentElement.querySelector('.js-form-status');
-  const button = form.querySelector('[type="submit"]');
-  const successHtml = status && status.innerHTML.trim()
-    ? status.innerHTML
-    : 'Готово! Скоро напишем тебе';
+// Экран 1, Экран 10: мобильное меню
+function initMenu() {
+    const menu = document.querySelector('.menu')
+    const openButton = document.querySelector('.js-menu-open')
 
-  const showStatus = (html) => {
-    if (!status) return;
-    status.innerHTML = html;
-    status.hidden = false;
-  };
-
-  form.addEventListener('submit', async (event) => {
-    event.preventDefault();
-    button.disabled = true;
-
-    try {
-      const response = await fetch(form.action, {
-        method: 'POST',
-        body: new FormData(form),
-        headers: { Accept: 'application/json' },
-      });
-
-      if (!response.ok) throw new Error(response.status);
-
-      form.reset();
-      showStatus(successHtml);
-    } catch (error) {
-      showStatus('Не получилось отправить. Попробуй ещё раз');
-    } finally {
-      button.disabled = false;
-    }
-  });
-});
-
-// Веер историй: бесконечная лента по дуге.
-// Курсор у края задаёт скорость (у правого края лента едет влево, у левого — вправо),
-// в середине лента стоит. Когда курсор уходит, ближайшая карточка доезжает до центра.
-(() => {
-  const fan = document.querySelector('.st-fan');
-  if (!fan) return;
-
-  const canAnimate = window.matchMedia(
-    '(hover: hover) and (min-width: 861px) and (prefers-reduced-motion: no-preference)'
-  );
-  const MAX_SPEED = 2.5; // карточек в секунду у самого края
-  const DEAD_ZONE = 0.2; // доля ширины в центре, где лента стоит
-
-  const originals = [...fan.querySelectorAll('.st-fan__item')];
-  const center = (originals.length - 1) / 2;
-
-  // Копии нужны, чтобы по краям экрана всегда были карточки и «перескок» был не виден
-  const clones = originals.map((item) => {
-    const clone = item.cloneNode(true);
-    clone.dataset.clone = '';
-    clone.setAttribute('aria-hidden', 'true');
-    clone.querySelectorAll('a').forEach((link) => link.setAttribute('tabindex', '-1'));
-    return clone;
-  });
-  const items = [...originals, ...clones];
-  const total = items.length;
-
-  let offset = 0;
-  let speed = 0;
-  let targetSpeed = 0;
-  let hovering = false;
-  let frame = null;
-  let lastTime = 0;
-
-  // Сводим позицию к диапазону [-total/2, total/2), чтобы карточки шли по кругу
-  const wrap = (t) => ((((t + total / 2) % total) + total) % total) - total / 2;
-
-  const render = () => {
-    items.forEach((item, i) => {
-      const t = wrap(i - center + offset);
-      item.style.setProperty('--t', t.toFixed(4));
-      item.style.zIndex = String(100 - Math.round(Math.abs(t) * 10));
-    });
-  };
-
-  const tick = (time) => {
-    const dt = Math.min((time - lastTime) / 1000, 0.05);
-    lastTime = time;
-
-    speed += (targetSpeed - speed) * Math.min(1, dt * 6);
-    offset = wrap(offset + speed * dt);
-
-    // Без курсора — плавно доводим до ближайшей карточки
-    if (!hovering && Math.abs(speed) < 0.05) {
-      speed = 0;
-      const snap = Math.round(offset) - offset;
-      offset += Math.abs(snap) < 0.001 ? snap : snap * Math.min(1, dt * 6);
+    const closeMenu = () => {
+        menu.hidden = true
+        openButton.setAttribute('aria-expanded', 'false')
+        document.body.classList.remove('is-locked')
     }
 
-    render();
+    openButton.addEventListener('click', () => {
+        menu.hidden = false
+        openButton.setAttribute('aria-expanded', 'true')
+        document.body.classList.add('is-locked')
+        menu.querySelector('.js-menu-close').focus()
+    })
 
-    const settled = !hovering && speed === 0 && offset === Math.round(offset);
-    frame = settled ? null : requestAnimationFrame(tick);
-  };
+    menu.querySelector('.js-menu-close').addEventListener('click', () => {
+        closeMenu()
+        openButton.focus()
+    })
 
-  const start = () => {
-    if (frame) return;
-    lastTime = performance.now();
-    frame = requestAnimationFrame(tick);
-  };
+    menu.querySelectorAll('.js-menu-link').forEach((link) => {
+        link.addEventListener('click', closeMenu)
+    })
 
-  fan.addEventListener('mousemove', (event) => {
-    if (!canAnimate.matches) return;
-    const rect = fan.getBoundingClientRect();
-    const pos = ((event.clientX - rect.left) / rect.width) * 2 - 1; // -1…1
-    const strength = Math.max(0, Math.abs(pos) - DEAD_ZONE) / (1 - DEAD_ZONE);
-    hovering = true;
-    targetSpeed = -Math.sign(pos) * strength * MAX_SPEED;
-    start();
-  });
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !menu.hidden) closeMenu()
+    })
+}
 
-  fan.addEventListener('mouseleave', () => {
-    hovering = false;
-    targetSpeed = 0;
-    start();
-  });
+// Экран 2: бегущая строка персонажей.
+// У краёв экрана персонажи самые большие, к середине уменьшаются, в центре самые маленькие.
+// Высоты из макета: 233 и 141 px на десктопе, 117 и 71 px на телефоне, то есть одна пропорция.
+function initHeroRun() {
+    document.querySelectorAll('.js-hero-run').forEach((track) => {
+        // вторая копия персонажей, чтобы строка шла без стыка
+        const copy = track.firstElementChild.cloneNode(true)
+        copy.setAttribute('aria-hidden', 'true')
+        track.append(copy)
+    })
 
-  const setup = () => {
-    cancelAnimationFrame(frame);
-    frame = null;
-    offset = speed = targetSpeed = 0;
+    const items = document.querySelectorAll('.hero-run__item')
+    // считаем размеры, только пока первый экран виден
+    const visibleRuns = new Set()
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+            if (entry.isIntersecting) visibleRuns.add(entry.target)
+            else visibleRuns.delete(entry.target)
+        })
+    })
+    document.querySelectorAll('.hero-run').forEach((run) => observer.observe(run))
 
-    if (canAnimate.matches) {
-      clones.forEach((clone) => fan.appendChild(clone));
-      render();
+    const updateSizes = () => {
+        const middle = window.innerWidth / 2
+        // сначала читаем все позиции, потом пишем размеры, чтобы не дёргать раскладку
+        const centers = Array.from(items, (item) => {
+            const box = item.getBoundingClientRect()
+            return box.width ? box.left + box.width / 2 : null
+        })
+
+        items.forEach((item, index) => {
+            if (centers[index] === null) return
+            // в макете персонажи дорастают до полного размера примерно на 60% пути к краю
+            const distance = Math.min(Math.abs(centers[index] - middle) / (middle * HERO_FULL_SIZE_AT), 1)
+            item.style.scale = HERO_SMALLEST_SCALE + (1 - HERO_SMALLEST_SCALE) * distance ** 2
+        })
+    }
+
+    const loop = () => {
+        if (visibleRuns.size) updateSizes()
+        requestAnimationFrame(loop)
+    }
+
+    if (isReducedMotion) {
+        updateSizes()
+        window.addEventListener('resize', updateSizes)
     } else {
-      // На мобильной ленте — только оригиналы и позиции из CSS
-      clones.forEach((clone) => clone.remove());
-      originals.forEach((item) => {
-        item.style.removeProperty('--t');
-        item.style.removeProperty('z-index');
-      });
+        loop()
     }
-  };
+}
 
-  canAnimate.addEventListener('change', setup);
-  setup();
-})();
+// Экран 4: карточки интерактивов сворачиваются по кнопке «+»
+function initTopics() {
+    document.querySelectorAll('.js-topic-toggle').forEach((button) => {
+        const topic = button.closest('.topic')
+        const title = topic.querySelector('h3 img').alt
+
+        topic.addEventListener('click', (event) => {
+            if (event.target.closest('a')) return
+
+            const isOpen = topic.classList.toggle('is-open')
+            button.setAttribute('aria-expanded', String(isOpen))
+            button.setAttribute('aria-label', `${isOpen ? 'Свернуть' : 'Развернуть'} «${title}»`)
+        })
+    })
+}
+
+// Истории: варианты ответа, выбрать можно один
+function initChoices() {
+    document.querySelectorAll('.js-choices').forEach((group) => {
+        const options = group.querySelectorAll('[aria-pressed]')
+
+        options.forEach((option) => {
+            option.addEventListener('click', () => {
+                options.forEach((other) => other.setAttribute('aria-pressed', String(other === option)))
+            })
+        })
+    })
+}
+
+// Истории: «разбор» по нажатию, повторное нажатие прячет подсказку
+function initReveals() {
+    document.querySelectorAll('.js-reveal').forEach((button) => {
+        button.addEventListener('click', () => {
+            button.setAttribute('aria-pressed', String(button.getAttribute('aria-pressed') !== 'true'))
+        })
+    })
+}
+
+// Персонажи: короткая смешная анимация по клику
+function initCharacters() {
+    document.querySelectorAll('.character').forEach((character) => {
+        character.addEventListener('click', () => {
+            character.classList.remove('is-playing')
+            // перезапуск анимации, если кликнули ещё раз
+            void character.offsetWidth
+            character.classList.add('is-playing')
+        })
+
+        character.addEventListener('animationend', (event) => {
+            if (event.animationName === 'character-play') character.classList.remove('is-playing')
+        })
+    })
+}
+
+// Экран 6: проверка почты и отправка формы.
+// Бэкенд подключается через action формы; без него успех не показываем.
+function initSubscribeForm() {
+    const form = document.querySelector('.js-subscribe-form')
+    // на страницах без формы (например, «истории») подписки нет
+    if (!form) return
+
+    const input = form.querySelector('input[type="email"]')
+    const button = form.querySelector('[type="submit"]')
+    const status = document.querySelector('.js-form-status')
+
+    const showStatus = (text, state) => {
+        status.textContent = text
+        status.classList.toggle('is-success', state === 'success')
+        form.classList.toggle('is-error', state === 'error')
+        form.classList.toggle('is-success', state === 'success')
+        input.setAttribute('aria-invalid', String(state === 'error'))
+    }
+
+    input.addEventListener('input', () => {
+        if (form.classList.contains('is-error')) showStatus('', null)
+    })
+
+    form.addEventListener('submit', async (event) => {
+        event.preventDefault()
+        const email = input.value.trim()
+
+        if (!EMAIL_PATTERN.test(email)) {
+            showStatus(email ? 'проверь почту: похоже, в ней опечатка' : 'введи почту', 'error')
+            input.focus()
+            return
+        }
+
+        if (!form.getAttribute('action')) {
+            showStatus('форма пока не подключена к серверу', 'error')
+            return
+        }
+
+        button.disabled = true
+
+        try {
+            const response = await fetch(form.action, {
+                method: 'POST',
+                body: new FormData(form),
+                headers: { Accept: 'application/json' },
+            })
+
+            if (!response.ok) throw new Error(response.status)
+
+            form.reset()
+            showStatus('', 'success')
+            openModal()
+        } catch (error) {
+            showStatus('не получилось отправить, попробуй ещё раз', 'error')
+        } finally {
+            button.disabled = false
+        }
+    })
+}
+
+// Экран 11: окно «ты в списке!»
+function initModal() {
+    if (!modal) return
+
+    modal.querySelectorAll('.js-modal-close').forEach((button) => {
+        button.addEventListener('click', closeModal)
+    })
+
+    modal.addEventListener('click', (event) => {
+        if (event.target === modal) closeModal()
+    })
+
+    document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape' && !modal.hidden) closeModal()
+    })
+}
+
+function openModal() {
+    lastFocused = document.activeElement
+    modal.hidden = false
+    document.body.classList.add('is-locked')
+
+    requestAnimationFrame(() => {
+        modal.classList.add('is-open')
+        modal.querySelector('.modal__window').focus()
+    })
+}
+
+function closeModal() {
+    modal.classList.remove('is-open')
+    document.body.classList.remove('is-locked')
+
+    const hide = () => {
+        modal.hidden = true
+        if (lastFocused) lastFocused.focus()
+    }
+
+    setTimeout(hide, isReducedMotion ? 0 : 250)
+}

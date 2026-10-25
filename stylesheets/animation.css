@@ -1,21 +1,163 @@
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Персонажи: спокойная анимация в своём ритме, реакция на наведение и клик.
+   Покой задаёт transform, наведение — scale, клик — отдельная анимация translate/rotate,
+   поэтому они не перебивают друг друга и не трогают положение в макете. */
+.character {
+    --speed: 4s;
+    animation: var(--idle, none) var(--speed) ease-in-out infinite;
+    transition: scale 0.2s ease;
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-drag: none;
 }
 
-.fade-in {
-  animation: fadeIn 0.5s ease both;
+.character:hover {
+    scale: 1.06;
+}
+
+.character.is-playing {
+    animation:
+        var(--idle, none) var(--speed) ease-in-out infinite,
+        character-play 0.7s ease-out;
+}
+
+.character--sway {
+    --idle: character-sway;
+}
+
+.character--bounce {
+    --idle: character-bounce;
+}
+
+.character--breathe {
+    --idle: character-breathe;
+}
+
+.character--blink .character__eyes {
+    transform-box: fill-box;
+    transform-origin: center;
+    animation: character-blink var(--blink-speed, 5s) var(--blink-delay, 0s) infinite;
+}
+
+/* Индивидуальный ритм сохраняет несинхронное моргание прежних SVG. */
+.interactives__character { --blink-speed: 4.8s; --blink-delay: 0.22s; }
+.subscribe__character { --blink-speed: 5.5s; --blink-delay: 0.59s; }
+.marquee .character--bounce { --blink-speed: 6.2s; --blink-delay: 0.96s; }
+.marquee .character--sway { --blink-speed: 3.9s; --blink-delay: 1.33s; }
+.menu__stripe .character--bounce { --blink-speed: 3.7s; --blink-delay: 0.81s; }
+.menu__stripe .character--tilt { --blink-speed: 6s; --blink-delay: 0.44s; }
+.menu__stripe .character--sway { --blink-speed: 4.6s; --blink-delay: 1.7s; }
+.modal__character { --blink-speed: 5.1s; --blink-delay: 1.55s; }
+.story-hero__character--hash { --blink-speed: 5.2s; --blink-delay: 0.35s; }
+.story-hero__character--star { --blink-speed: 4.7s; --blink-delay: 1.2s; }
+.story-check__character { --blink-speed: 5.6s; --blink-delay: 0.8s; }
+.story-link__character { --blink-speed: 4.9s; --blink-delay: 1.5s; }
+.story-gift__character--hash { --blink-speed: 5.4s; --blink-delay: 0.2s; }
+.story-gift__character--ampersand { --blink-speed: 4.6s; --blink-delay: 1.1s; }
+.story-clue__character { --blink-speed: 5.8s; --blink-delay: 0.6s; }
+.story-solved__character--hash { --blink-speed: 4.4s; --blink-delay: 0.9s; }
+.story-solved__character--star { --blink-speed: 5.1s; --blink-delay: 1.4s; }
+
+.character--tilt {
+    --idle: character-tilt;
+}
+
+@keyframes character-sway {
+    0%, 100% { transform: rotate(-3deg); }
+    50% { transform: rotate(3deg); }
+}
+
+@keyframes character-bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4%); }
+}
+
+@keyframes character-breathe {
+    0%, 100% { transform: scale(1, 1); }
+    50% { transform: scale(1.03, 0.97); }
+}
+
+@keyframes character-blink {
+    0%, 92%, 100% { transform: scaleY(1); }
+    95% { transform: scaleY(0.1); }
+}
+
+@keyframes character-tilt {
+    0%, 70%, 100% { transform: rotate(0); }
+    80% { transform: rotate(-6deg); }
+    90% { transform: rotate(4deg); }
+}
+
+@keyframes character-play {
+    0% { translate: 0 0; rotate: 0deg; }
+    30% { translate: 0 -18%; rotate: -12deg; }
+    55% { translate: 0 0; rotate: 10deg; }
+    75% { translate: 0 -6%; rotate: -4deg; }
+    100% { translate: 0 0; rotate: 0deg; }
+}
+
+/* Экран 8 */
+.marquee__track {
+    animation: marquee 28s linear infinite;
+}
+
+.marquee:hover .marquee__track {
+    animation-play-state: paused;
+}
+
+@keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(-50%); }
+}
+
+/* Экран 2: бегущая строка персонажей.
+   Движение — у ленты, размер по положению — у .hero-run__item (scale из javascripts/index.js),
+   спокойная анимация и реакция на наведение — у .character внутри, поэтому они не мешают друг другу. */
+.hero-run__track {
+    animation: marquee 110s linear infinite;
+}
+
+.hero-run__item,
+.hero-run .character {
+    transform-origin: 50% 100%;
+}
+
+.hero-run .character:hover {
+    scale: 1.08;
+    animation:
+        var(--idle, none) var(--speed) ease-in-out infinite,
+        character-play 0.7s ease-out;
+}
+
+/* моргание: поверх обычного лица на миг показываем то же лицо с закрытыми глазами */
+.hero-run__blink {
+    opacity: 0;
+    animation: hero-blink var(--blink, 4s) steps(1) infinite;
+}
+
+@keyframes hero-blink {
+    0%, 94%, 100% { opacity: 0; }
+    95%, 98% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-  }
+    html {
+        scroll-behavior: auto;
+    }
+
+    .character,
+    .character.is-playing,
+    .marquee__track,
+    .hero-run__track,
+    .hero-run__blink,
+    .character--blink .character__eyes,
+    .hero-run .character:hover {
+        animation: none;
+    }
+
+    .character,
+    .modal,
+    .modal__window,
+    .menu {
+        transition: none;
+    }
 }
